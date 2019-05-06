@@ -1,4 +1,4 @@
-package dataStructure.stack;
+package dataStructure.staticStru.stack;
 
 public class MyArrayStack implements MyStack {
 

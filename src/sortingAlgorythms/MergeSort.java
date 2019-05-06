@@ -1,13 +1,15 @@
 package sortingAlgorythms;
 
+import java.util.Arrays;
+
 public class MergeSort {
 
 
     public static void main(String[] args) {
-        int[] arr = { 5, 1, 6, 2, 3, 4 };
+        int[] arr = {5, 1, 6, 2, 3, 4, 8};
+        System.out.println(Arrays.toString(arr));
         mergeSort(arr, arr.length);
-        for (int i = 0; i < arr.length; i++)
-            System.out.println(arr[i]);
+        System.out.println(Arrays.toString(arr));
     }
 
     public static void mergeSort(int[] arr, int n) {
@@ -17,12 +19,9 @@ public class MergeSort {
         int[] leftMid = new int[mid];
         int[] rightMid = new int[n - mid];
 
-        for (int i = 0; i < mid; i++) {
-            leftMid[i] = arr[i];
-        }
-        for (int i = mid; i < n; i++) {
-            rightMid[i - mid] = arr[i];
-        }
+        System.arraycopy(arr, 0, leftMid, 0, mid);
+        System.arraycopy(arr, mid, rightMid, 0, arr.length - mid);
+
         mergeSort(leftMid, mid);
         mergeSort(rightMid, n - mid);
 
@@ -34,12 +33,10 @@ public class MergeSort {
         int i = 0, j = 0, k = 0;
 
         while (i < left && j < right) {
-
             if (leftMid[i] <= rightMid[j])
                 arr[k++] = leftMid[i++];
             else
                 arr[k++] = rightMid[j++];
-
         }
 
         while (i < left)
